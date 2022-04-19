@@ -3,7 +3,6 @@ using SheetCutter.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace SheetCutter
@@ -18,8 +17,9 @@ namespace SheetCutter
         {
             Collection = new ObservableCollection<Detail>()
             {
-                 new Detail(){Count =1, Width =15, Height = 20},
-                 new Detail(){Count =1, Width =50, Height = 60}
+                 new Detail(){Count =20, Width =20, Height = 20},
+                 new Detail(){Count =10, Width =50, Height = 50},
+                 new Detail(){Count =5, Width =150, Height = 50}
             };
             DataContext = this;
             InitializeComponent();
@@ -27,11 +27,16 @@ namespace SheetCutter
 
         private void CreateRectangle(ObservableCollection<Detail> details)
         {
+            RectangleMapper.Children.Clear();
             var rec1 = new ArevaloRectanglePacker((int)RectangleMapper.ActualWidth, (int)RectangleMapper.ActualHeight);
 
+            //var detCol = details.Select(s => s);
             foreach (var detail in details)
             {
-                rec1.Pack(detail.Width, detail.Height);
+                for (int i = 0; i < detail.Count; i++)
+                {
+                    rec1.Pack(detail.Width, detail.Height);
+                }
             }
 
             foreach (var rect in rec1.packedRectangles)
@@ -40,9 +45,6 @@ namespace SheetCutter
                 {
                     Height = rect.Height,
                     Width = rect.Width,
-                    StrokeThickness = 4,
-                    Fill = new SolidColorBrush(Colors.Blue),
-                    Stroke = new SolidColorBrush(Colors.Black),
                 };
                 Canvas.SetLeft(rec, rect.X);
                 Canvas.SetTop(rec, rect.Y);

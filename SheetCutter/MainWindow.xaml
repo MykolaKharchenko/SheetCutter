@@ -15,6 +15,12 @@
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="16"/>
         </Style>
+
+        <Style TargetType="Rectangle">
+            <Setter Property="StrokeThickness" Value="2"/>
+            <Setter Property="Fill" Value="LightGreen"/>
+            <Setter Property="Stroke" Value="DarkGreen"/>
+        </Style>  
     </Window.Resources>
     
     <Grid>
@@ -28,32 +34,6 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <!--<Grid x:Name="RectangleSet"
-              Grid.Row="0" Grid.Column="0"
-              Grid.RowSpan="2">
-            
-            --><!--<ListBox>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="25"/>
-                            </Grid.ColumnDefinitions>
-                            
-                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Sys.Country}"/>
-                            <Button Grid.Column="3" Content="X" 
-                                    Command="{Binding ElementName=Cities, Path=DataContext.RemoveCityCommand}"/>
-                        </Grid>
-                        
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>--><!--</Grid>-->
-
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Details"/>
 
         <DataGrid x:Name="RectangleSet"
@@ -64,6 +44,7 @@
                   MinColumnWidth="60"
                   AutoGenerateColumns="True">
         </DataGrid>
+        
         <Button Grid.Row="2" Grid.Column="0"
                 Margin="5,140,5,10"
                 Command="{Binding CalculateCommand}"
@@ -74,58 +55,7 @@
               Grid.RowSpan="3"
               Background="LightGray"
               Margin="20">
-            <Rectangle Canvas.Left="0" Canvas.Bottom="0"  
-                       Width="200" Height="100" 
-                       Fill="LightGreen"  Stroke="DarkGreen" StrokeThickness="1" />
-            <Rectangle Canvas.Left="200" Canvas.Bottom="0"  
-                       Width="200" Height="100" 
-                       Fill="LightGreen"  Stroke="DarkGreen" StrokeThickness="1" ></Rectangle>
-
-        </Canvas>      
-
-        <!--<Grid Grid.Row="0" Grid.Column="0"
-              Grid.RowSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="50"/>
-            </Grid.ColumnDefinitions>
-
-            --><!--<TextBlock Grid.Row="0" Grid.Column="0"
-                       Grid.ColumnSpan="4"
-                       Text="Rectangle Set"
-                       FontSize="24"/>
-            
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Count"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="Width"/>
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="Height"/>
-  
-            <ListBox Grid.Row="2" Grid.Column="0"
-                     Grid.ColumnSpan="4"
-                     ItemsSource="{Binding }">
-                
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="50"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
-                            <TextBlock Grid.Column="1" Text="{Binding Sys.Country}"/>
-                            <Button Grid.Column="3" Content="+" 
-                                    Command="{Binding ElementName=Cities, Path=DataContext.RemoveCityCommand}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>--><!--</Grid>-->
+        </Canvas>
+        
     </Grid>
 </Window> 
