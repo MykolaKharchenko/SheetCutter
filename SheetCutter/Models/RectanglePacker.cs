@@ -28,7 +28,10 @@ namespace SheetCutter.Models
         public virtual Point Pack(int rectangleWidth, int rectangleHeight)
         {
             if (!TryPack(rectangleWidth, rectangleHeight, out Point point))
-                throw new OutOfSpaceException("Rectangle does not fit in packing area");
+            {
+                System.Windows.MessageBox.Show("it is impossible to place details");
+                //throw new OutOfSpaceException("Rectangle does not fit in packing area"); 
+            }
 
             return point;
         }
