@@ -11,6 +11,9 @@ namespace SheetCutter
     public partial class MainWindow : Window
     {
         public ObservableCollection<Detail> Collection { get; set; }
+        public int CanvasWidth { get; set; }
+        public int CanvasHeight { get; set; }
+
         public MainWindow()
         {
             Collection = new ObservableCollection<Detail>()
@@ -57,12 +60,18 @@ namespace SheetCutter
                 for (int i = 0; i < detail.Count; i++)
                 {
                     _packer.Pack(detail.Width, detail.Height);
+
+                    // here must be handle exception
                 }
             }
         }
 
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
+            RectangleMapper.Width = CanvasWidth;
+            RectangleMapper.Height = CanvasHeight;
+
+
             FillMapper(Collection);
         }
     }

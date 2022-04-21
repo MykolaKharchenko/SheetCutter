@@ -4,55 +4,78 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+    
     <Window.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,0,5,5"/>
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="14"/>
         </Style>
 
         <Style TargetType="Rectangle">
-            <Setter Property="StrokeThickness" Value="2"/>
+            <Setter Property="StrokeThickness" Value="1"/>
             <Setter Property="Fill" Value="LightGreen"/>
             <Setter Property="Stroke" Value="DarkGreen"/>
-        </Style>  
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="5,0,5,5"/>
+        </Style>
     </Window.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2.2*"/>
+            <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Details"/>
 
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="5">
+            <TextBlock HorizontalAlignment="Left" FontSize="16" Text="Sheet Size"/>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Left" Text="Width "/>
+                <TextBox Text="{Binding CanvasWidth}" MinWidth="80"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Left" Text="Height"/>
+                <TextBox Text="{Binding CanvasHeight}" MinWidth="80"></TextBox>
+            </StackPanel>
+
+            <TextBlock HorizontalAlignment="Left" FontSize="16" Text="Details" Margin="5,5,0,0"/>
+        </StackPanel>        
+        
+        
         <DataGrid x:Name="RectangleSet"
                   ItemsSource="{Binding Collection}"
                   Grid.Row="1" Grid.Column="0" 
-                  Grid.RowSpan="2"        
-                  Margin="5,20,5,70"
+                  Margin="5,0" 
                   MinColumnWidth="60"
                   AutoGenerateColumns="True">
         </DataGrid>
         
         <Button Grid.Row="2" Grid.Column="0"
-                Margin="5,140,5,10"
-                Command="{Binding CalculateCommand}"
+                Margin="5,10" 
                 Content="Calculate Packing" Click="Calculate_Click"/>
 
         <Canvas x:Name="RectangleMapper"
               Grid.Row="0" Grid.Column="1"
               Grid.RowSpan="3"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
               Background="LightGray"
               Margin="20">
         </Canvas>

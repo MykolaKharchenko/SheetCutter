@@ -30,6 +30,7 @@ namespace SheetCutter.Models
             if (!TryPack(rectangleWidth, rectangleHeight, out Point point))
             {
                 System.Windows.MessageBox.Show("it is impossible to place details");
+                return Point.Empty;
                 //throw new OutOfSpaceException("Rectangle does not fit in packing area"); 
             }
 
