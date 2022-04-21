@@ -10,13 +10,13 @@ namespace SheetCutter
 {
     public partial class MainWindow : Window
     {
-        public ObservableCollection<Detail> Collection { get; set; }
-        public int CanvasWidth { get; set; }
-        public int CanvasHeight { get; set; }
+        public ObservableCollection<Detail> Details { get; set; }
+        public int SheetWidth { get; set; }
+        public int SheetHeight { get; set; }
 
         public MainWindow()
         {
-            Collection = new ObservableCollection<Detail>()
+            Details = new ObservableCollection<Detail>()
             {
                 // temporary detail set   
                  new Detail(){Count =20, Width =20, Height = 20},
@@ -28,7 +28,16 @@ namespace SheetCutter
             InitializeComponent();
         }
 
-        private void FillMapper(ObservableCollection<Detail> details)
+        private void Calculate_Click(object sender, RoutedEventArgs e)
+        {
+            RectangleMapper.Width = SheetWidth;
+            RectangleMapper.Height = SheetHeight;
+            RectangleMapper.RenderSize = new Size(SheetWidth, SheetHeight);
+
+            FillSheet(Details);
+        }
+
+        private void FillSheet(ObservableCollection<Detail> details)
         {
             // refresh mapper
             RectangleMapper.Children.Clear();
@@ -54,25 +63,22 @@ namespace SheetCutter
 
         private void CalculatePositions(ObservableCollection<Detail> _details, ArevaloRectanglePacker _packer)
         {
-            // locate each detail in packer  algorithm
+            // get location of each details using algorithm
             foreach (var detail in _details.OrderByDescending(x => x.Height))
             {
                 for (int i = 0; i < detail.Count; i++)
                 {
-                    _packer.Pack(detail.Width, detail.Height);
-
-                    // here must be handle exception
+                    try
+                    {
+                        _packer.Pack(detail.Width, detail.Height);
+                    }
+                    catch (OutOfSpaceException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        return;
+                    }
                 }
             }
-        }
-
-        private void Calculate_Click(object sender, RoutedEventArgs e)
-        {
-            RectangleMapper.Width = CanvasWidth;
-            RectangleMapper.Height = CanvasHeight;
-
-
-            FillMapper(Collection);
         }
     }
 }

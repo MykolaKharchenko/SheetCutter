@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="MainWindow" Height="450" Width="800" ResizeMode="CanResizeWithGrip">
     
     <Window.Resources>
         <Style TargetType="TextBlock">
@@ -47,12 +47,12 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock HorizontalAlignment="Left" Text="Width "/>
-                <TextBox Text="{Binding CanvasWidth}" MinWidth="80"></TextBox>
+                <TextBox Text="{Binding SheetWidth}" MinWidth="80"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock HorizontalAlignment="Left" Text="Height"/>
-                <TextBox Text="{Binding CanvasHeight}" MinWidth="80"></TextBox>
+                <TextBox Text="{Binding SheetHeight}" MinWidth="80"></TextBox>
             </StackPanel>
 
             <TextBlock HorizontalAlignment="Left" FontSize="16" Text="Details" Margin="5,5,0,0"/>
@@ -60,7 +60,7 @@
         
         
         <DataGrid x:Name="RectangleSet"
-                  ItemsSource="{Binding Collection}"
+                  ItemsSource="{Binding Details}"
                   Grid.Row="1" Grid.Column="0" 
                   Margin="5,0" 
                   MinColumnWidth="60"
@@ -71,14 +71,12 @@
                 Margin="5,10" 
                 Content="Calculate Packing" Click="Calculate_Click"/>
 
-        <Canvas x:Name="RectangleMapper"
-              Grid.Row="0" Grid.Column="1"
-              Grid.RowSpan="3"
-              HorizontalAlignment="Left"
-              VerticalAlignment="Top"
-              Background="LightGray"
-              Margin="20">
-        </Canvas>
-        
+        <Viewbox
+                Grid.Row="0" Grid.Column="1"
+                Grid.RowSpan="3"  Margin="20"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+            <Canvas x:Name="RectangleMapper" Background="Brown"/>
+        </Viewbox>
     </Grid>
 </Window> 
