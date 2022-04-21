@@ -1,38 +1,26 @@
 ﻿namespace SheetCutter.DataModels
 {
-    public class Detail : NotifyPropertyChanged
+    public class Detail
     {
-        private byte count;     
+        private byte count;
         public byte Count
         {
             get { return count; }
-            set
-            {
-                count = value;
-                OnPropertyChanged(nameof(Count));
-            }
+            set { count = value; }
         }
 
         private int width;
         public int Width
         {
             get { return width; }
-            set
-            {
-                width = value;
-                OnPropertyChanged(nameof(Width));
-            }
+            set { width = value; }
         }
 
         private int height;
         public int Height
         {
             get { return height; }
-            set
-            {
-                height = value;
-                OnPropertyChanged(nameof(Height));
-            }
+            set { height = value; }
         }
     }
 }

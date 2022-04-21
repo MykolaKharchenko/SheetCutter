@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SheetCutter.Models
 {
-    public class CygonRectanglePack : RectanglePacker
+    public class CygonRectanglePacker : RectanglePacker
     {
         #region class SliceStartComparer
         private class SliceStartComparer : IComparer<Point>
@@ -22,7 +22,7 @@ namespace SheetCutter.Models
 
         public List<Point> heightSlices;
 
-        public CygonRectanglePack(int packingAreaWidth, int packingAreaHeight) : base(packingAreaWidth, packingAreaHeight)
+        public CygonRectanglePacker(int packingAreaWidth, int packingAreaHeight) : base(packingAreaWidth, packingAreaHeight)
         {
             heightSlices = new List<Point> { new Point(0, 0) };
         }

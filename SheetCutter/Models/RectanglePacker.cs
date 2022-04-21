@@ -31,7 +31,6 @@ namespace SheetCutter.Models
             {
                 throw new OutOfSpaceException("Rectangle does not fit in packing area"); 
             }
-
             return point;
         }
 

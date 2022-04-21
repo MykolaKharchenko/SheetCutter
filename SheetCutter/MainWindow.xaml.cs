@@ -32,7 +32,7 @@ namespace SheetCutter
         {
             RectangleMapper.Width = SheetWidth;
             RectangleMapper.Height = SheetHeight;
-            RectangleMapper.RenderSize = new Size(SheetWidth, SheetHeight);
+            RectangleMapper.UpdateLayout();
 
             FillSheet(Details);
         }
@@ -63,7 +63,7 @@ namespace SheetCutter
 
         private void CalculatePositions(ObservableCollection<Detail> _details, ArevaloRectanglePacker _packer)
         {
-            // get location of each details using algorithm
+            // get position of each details using algorithm
             foreach (var detail in _details.OrderByDescending(x => x.Height))
             {
                 for (int i = 0; i < detail.Count; i++)
@@ -75,6 +75,7 @@ namespace SheetCutter
                     catch (OutOfSpaceException ex)
                     {
                         MessageBox.Show(ex.Message);
+                        _packer.packedRectangles.Clear();
                         return;
                     }
                 }
