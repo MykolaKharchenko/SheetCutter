@@ -9,7 +9,6 @@ namespace SheetCutter.Models
         private int packingAreaHeight;
 
         protected int PackingAreaWidth => packingAreaWidth;
-
         protected int PackingAreaHeight => packingAreaHeight;
 
         /// <summary>Initializes a new rectangle packer</summary>                                     

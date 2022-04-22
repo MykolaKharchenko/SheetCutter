@@ -1,6 +1,6 @@
 ﻿namespace SheetCutter.DataModels
 {
-    public class Detail
+    public class ProductDetail
     {
         private byte count;
         public byte Count

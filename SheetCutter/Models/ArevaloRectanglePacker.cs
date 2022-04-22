@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SheetCutter.Models
 {
@@ -134,7 +131,6 @@ namespace SheetCutter.Models
 
             for (int index = 0; index < packedRectangles.Count; ++index)
             {
-                //if (this.packedRectangles[index].Intersects(rectangle))
                 if (packedRectangles[index].IntersectsWith(rectangle))
                     return false;
             }
